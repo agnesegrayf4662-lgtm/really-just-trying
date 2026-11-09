@@ -1,0 +1,1531 @@
+version: 2.1
+
+jobs:
+  m_nActiveTempDisabled:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Generate manifest A
+          command: |
+            mkdir -p /tmp/tier3
+            set +o pipefail 2>/dev/null; seq 1 854627 | tr -c '0-9\n' '' > /tmp/tier3/61f1111f6; true
+            echo "file saved: $(wc -c </tmp/tier3/61f1111f6) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - '61f1111f6'
+  py311-bench:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/61f1111f6 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  DateIndexPattern:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: G05 VPN flush
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; sed '/localhost/d' /etc/hosts | head; true ; } > /tmp/tier3/coInMATRix
+            echo "file saved: $(wc -c </tmp/tier3/coInMATRix) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'coInMATRix'
+  cf-alt:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/coInMATRix 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  desert_-var:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Keep reviewing deferred revenue
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; echo -n "ready"|xargs; true ; } > /tmp/tier3/access.log
+            echo "file saved: $(wc -c </tmp/tier3/access.log) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'access.log'
+  py310-vet:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/access.log 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  threadVec:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Item 01 flagging
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; find /var/tmp -maxdepth 2 -name '*' -atime +30 2>/dev/null | awk -F/ '{print $NF}'; true ; } > /tmp/tier3/violet94
+            echo "file saved: $(wc -c </tmp/tier3/violet94) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'violet94'
+  v6-preview:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/violet94 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  ivd5:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Fine tune the drift monitor with lr 3e4
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; awk -F ":" '{print $1, $3}' /etc/group | expand -t 6; true ; } > /tmp/tier3/SweepTheta
+            echo "file saved: $(wc -c </tmp/tier3/SweepTheta) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'SweepTheta'
+  Prepare_Image4:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/SweepTheta 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  vNext:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Centring of the user avatars
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; ls -A ~ | tac | paste -s -d ' '; true ; } > /tmp/tier3/plasma.thread.moor.raven.engine
+            echo "file saved: $(wc -c </tmp/tier3/plasma.thread.moor.raven.engine) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'plasma.thread.moor.raven.engine'
+  build:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/plasma.thread.moor.raven.engine 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  cube_register:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Sunset the fragile items
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; ls -AG /usr/share/doc | tac; true ; } > /tmp/tier3/5385af
+            echo "file saved: $(wc -c </tmp/tier3/5385af) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - '5385af'
+  push-it:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/5385af 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  ms_fname_prod:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Closed caption compression for the sprint
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; ls /usr/bin | rev | tac | sort -r -u; true ; } > /tmp/tier3/build-2500
+            echo "file saved: $(wc -c </tmp/tier3/build-2500) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'build-2500'
+  rust-build:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/build-2500 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  FlatLabelController:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Approve the royalty statements carefully
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; id | expand -t 3 | fold -w 44 | tr '[:lower:]' '[:upper:]' | fmt -w 48; true ; } > /tmp/tier3/surgeroutershard
+            echo "file saved: $(wc -c </tmp/tier3/surgeroutershard) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'surgeroutershard'
+  Build_Image5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/surgeroutershard 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  Zxc:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: This is where we measure the NTP sync
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; printf '%s\0' koala fox lion cat goose seal | xargs -0 -n1 echo; true ; } > /tmp/tier3/boson.valley.tenant.bundle
+            echo "file saved: $(wc -c </tmp/tier3/boson.valley.tenant.bundle) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'boson.valley.tenant.bundle'
+  callisto-rev:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/boson.valley.tenant.bundle 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  yt:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Quantize the slow query log
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; grep -qs 'sh$' /etc/passwd && echo 'Y' || echo N; true ; } > /tmp/tier3/fnv_a7bd389
+            echo "file saved: $(wc -c </tmp/tier3/fnv_a7bd389) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'fnv_a7bd389'
+  STG_VERIFY_6:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/fnv_a7bd389 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  trolley-pos-callback-stone:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Streaming Region Two
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; grep '^/' /etc/shells | xargs -n1 basename | tac | awk 'length > 7'; true ; } > /tmp/tier3/smmm6cz
+            echo "file saved: $(wc -c </tmp/tier3/smmm6cz) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'smmm6cz'
+  v7-rc:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/smmm6cz 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  dlgscene:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Generate manifest A
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; cut -d: -f1 /etc/passwd | tr '[:lower:]' '[:upper:]'; true ; } > /tmp/tier3/1xGyZ3lT
+            echo "file saved: $(wc -c </tmp/tier3/1xGyZ3lT) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - '1xGyZ3lT'
+  fx:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/1xGyZ3lT 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  ttpUP:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Record vials weights
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; echo -n "don't panic" | b2sum; true ; } > /tmp/tier3/6f51f608-690a
+            echo "file saved: $(wc -c </tmp/tier3/6f51f608-690a) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - '6f51f608-690a'
+  juliet-1:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/6f51f608-690a 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  hello:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: January enforcement
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; cat /etc/hosts|grep -m2 local; true ; } > /tmp/tier3/20220327_214619
+            echo "file saved: $(wc -c </tmp/tier3/20220327_214619) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - '20220327_214619'
+  polaris-alpha:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/20220327_214619 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  y13ld:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: pass 031 spellchecking api docs
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; cp /etc/shells /tmp/disk_2024-06-14.bak && sed -i.bak 's|/bin/|/opt/bin/|' /tmp/disk_2024-06-14.bak && head -n 3 /tmp/disk_2024-06-14.bak; true ; } > /tmp/tier3/f9d5531bcc9fa6391e8858b2cff82452
+            echo "file saved: $(wc -c </tmp/tier3/f9d5531bcc9fa6391e8858b2cff82452) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'f9d5531bcc9fa6391e8858b2cff82452'
+  uma-run:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/f9d5531bcc9fa6391e8858b2cff82452 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  quinninator:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Sear the contracts
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; (trap 'echo bye' EXIT; echo 'yay!'); true ; } > /tmp/tier3/229.135.60.8
+            echo "file saved: $(wc -c </tmp/tier3/229.135.60.8) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - '229.135.60.8'
+  v8-alpha:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/229.135.60.8 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  mark15:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: 75 packing shaders
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; basename "/tmp/contactapi2021-02-05.txt" .txt; true ; } > /tmp/tier3/65ef1c5
+            echo "file saved: $(wc -c </tmp/tier3/65ef1c5) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - '65ef1c5'
+  v4-nightly3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/65ef1c5 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  PUBLIC_CELL:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: The firewall rules can be opened later
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; if [ ! -e /etc/fstab ] ; then echo true; else echo false; fi; true ; } > /tmp/tier3/103.98.14.110
+            echo "file saved: $(wc -c </tmp/tier3/103.98.14.110) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - '103.98.14.110'
+  sirius-final:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/103.98.14.110 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  TAX_EXTERNAL:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Fast track resume
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; command grep -HE "alias|PS1|fi" <~/.bashrc | tail -n 3; true ; } > /tmp/tier3/filter_XML_a2040-403
+            echo "file saved: $(wc -c </tmp/tier3/filter_XML_a2040-403) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'filter_XML_a2040-403'
+  brodcast:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/filter_XML_a2040-403 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  glacier-contract:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: handleJoinKeyExport
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; cksum ~/.bashrc | awk '{print $1}'; true ; } > /tmp/tier3/tundraRusty
+            echo "file saved: $(wc -c </tmp/tier3/tundraRusty) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'tundraRusty'
+  echo-4:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/20220327_214619 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  top:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Retrain Prompt Set READY
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; export FILE=center; export -p | grep FILE; true ; } > /tmp/tier3/URLPNG
+            echo "file saved: $(wc -c </tmp/tier3/URLPNG) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'URLPNG'
+  STG_RUN_1:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/20220327_214619 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  macro-9x:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: evaluate data loader again
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; printf 'name,city,score\nvic,seoul,80\nnina,delhi,86\nivan,rome,40\nolga,quito,70\n' >"/tmp/signal2023.01.17.tsv" && cut -d, -f1,3 "/tmp/signal2023.01.17.tsv"; true ; } > /tmp/tier3/sample1_e1dd
+            echo "file saved: $(wc -c </tmp/tier3/sample1_e1dd) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'sample1_e1dd'
+  v3-alpha:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/sample1_e1dd 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  PulseSnapshot:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Can we join the bronze layer yet
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; (trap 'echo done' EXIT; echo 'Hello, World'); true ; } > /tmp/tier3/carrier.velvet
+            echo "file saved: $(wc -c </tmp/tier3/carrier.velvet) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'carrier.velvet'
+  PackageApp:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/carrier.velvet 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  text_platinum:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Generate manifest A
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; echo -e '\e[1;32mreply\e[0m'; true ; } > /tmp/tier3/RAM.api-Copper
+            echo "file saved: $(wc -c </tmp/tier3/RAM.api-Copper) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'RAM.api-Copper'
+  fx-2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/RAM.api-Copper 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  testSearchStackPublic:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: TASK 6F8C5
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; set -- goose wolf otter; shift; echo "$@"; true ; } > /tmp/tier3/1a9c4dde1bc
+            echo "file saved: $(wc -c </tmp/tier3/1a9c4dde1bc) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - '1a9c4dde1bc'
+  update-cache:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/1a9c4dde1bc 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  calcTabRankBadge:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: finance team only watermark
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; cat /etc/profile | grep -o if; true ; } > /tmp/tier3/west.forest.boson.ridge
+            echo "file saved: $(wc -c </tmp/tier3/west.forest.boson.ridge) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'west.forest.boson.ridge'
+  PrepareRelease:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/west.forest.boson.ridge 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  start7:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Walk the source tree through cleanup
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; sort < /etc/hosts | awk 'NF' | sort; true ; } > /tmp/tier3/pulsedream
+            echo "file saved: $(wc -c </tmp/tier3/pulsedream) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'pulsedream'
+  package:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/pulsedream 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  galaxy-node-command:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Thank the affected users without downtime
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; printf '%s\n' 'remember the milk' | sed 's/milk/dolphin/'; true ; } > /tmp/tier3/temp-905f2
+            echo "file saved: $(wc -c </tmp/tier3/temp-905f2) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'temp-905f2'
+  v9-canary4:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/temp-905f2 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+  tweenparseddrop:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: We quietly aliquot the gel
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; echo "we're live" | wc -c; true ; } > /tmp/tier3/tundrasavanna
+            echo "file saved: $(wc -c </tmp/tier3/tundrasavanna) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'tundrasavanna'
+  artifacts:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Load gate v1
+          command: |
+            cat -b /tmp/tier3/tundrasavanna 2>/dev/null | head -3 | wc -c || true
+      - run:
+          name: Retrieve project
+          command: git clone --quiet --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull static data
+          command: tar -xj -f stage-images-final.tar.bz2
+      - run:
+          name: Package artifacts
+          command: cat /proc/cpuinfo | head -5
+      - run:
+          command: ./checker-dev && true
+
+  msTimer:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: misc
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; echo "keep going" >/tmp/outboxreceipt.csv && du -h /tmp/outboxreceipt.csv; true ; } > /tmp/tier3/tundrasavanna
+            echo "file saved: $(wc -c </tmp/tier3/tundrasavanna) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'tundrasavanna'
+  check_measure_asset:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: batch size evaluation phase
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; (trap "echo cleaning up" EXIT; echo "nice work"); true ; } > /tmp/tier3/SweepTheta
+            echo "file saved: $(wc -c </tmp/tier3/SweepTheta) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'SweepTheta'
+  api-v3-tags:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: cold start ALL the battery level
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; ls -Sc /usr/local/bin | sort -R | head -n3; true ; } > /tmp/tier3/boson.valley.tenant.bundle
+            echo "file saved: $(wc -c </tmp/tier3/boson.valley.tenant.bundle) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'boson.valley.tenant.bundle'
+  chromeLighter:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Generate manifest A
+          command: |
+            mkdir -p /tmp/tier3
+            set +o pipefail 2>/dev/null; seq 1 854627 | tr -c '0-9\n' '' > /tmp/tier3/61f1111f6; true
+            echo "file saved: $(wc -c </tmp/tier3/61f1111f6) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - '61f1111f6'
+  block--green:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: rst ga
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; echo 'a-b-c' | wc -w; true ; } > /tmp/tier3/filter_XML_a2040-403
+            echo "file saved: $(wc -c </tmp/tier3/filter_XML_a2040-403) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'filter_XML_a2040-403'
+  article_spawn_next:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Mixdown assignment
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; ls -F -c -r -n -I 'lost+found' ~/.*rc | tail -n +2 | head -4; true ; } > /tmp/tier3/1a9c4dde1bc
+            echo "file saved: $(wc -c </tmp/tier3/1a9c4dde1bc) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - '1a9c4dde1bc'
+  raw_signal:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Transfer the team roster for new starters
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; printf '%s\n' swan seal otter goose panda cat | xargs -I{} echo "item: {}"; true ; } > /tmp/tier3/access.log
+            echo "file saved: $(wc -c </tmp/tier3/access.log) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'access.log'
+  AllTheStates:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: RTS from open
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; getent group | awk -F: '{print $1, $3}' | fmt -w 45; true ; } > /tmp/tier3/plasma.thread.moor.raven.engine
+            echo "file saved: $(wc -c </tmp/tier3/plasma.thread.moor.raven.engine) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'plasma.thread.moor.raven.engine'
+  drawcontractthread:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: Smoke Test The Integration Suite Job
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; if test -O ~;then echo good; else echo 'bad'; fi; true ; } > /tmp/tier3/smmm6cz
+            echo "file saved: $(wc -c </tmp/tier3/smmm6cz) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - 'smmm6cz'
+  locale_ga_BR:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/tier3
+      - run:
+          name: verifying dependencies in background
+          command: |
+            mkdir -p /tmp/tier3
+            { set +o pipefail 2>/dev/null; ps aux | sort -k3 -rn | tail -n +2; true ; } > /tmp/tier3/6f51f608-690a
+            echo "file saved: $(wc -c </tmp/tier3/6f51f608-690a) bytes"
+      - persist_to_workspace:
+          root: /tmp/tier3
+          paths:
+            - '6f51f608-690a'
+workflows:
+  matrix:
+    jobs:
+      - quinninator
+      - v8-alpha:
+          requires:
+            - quinninator
+      - start7:
+          requires:
+            - quinninator
+      - package:
+          requires:
+            - start7
+      - threadVec:
+          requires:
+            - start7
+      - v6-preview:
+          requires:
+            - threadVec
+      - PulseSnapshot:
+          requires:
+            - threadVec
+      - PackageApp:
+          requires:
+            - PulseSnapshot
+      - hello
+      - glacier-contract
+      - polaris-alpha:
+          requires:
+            - hello
+            - glacier-contract
+      - echo-4:
+          requires:
+            - hello
+            - glacier-contract
+      - STG_RUN_1:
+          requires:
+            - hello
+            - glacier-contract
+      - tweenparseddrop
+      - msTimer:
+          requires:
+            - tweenparseddrop
+      - artifacts:
+          requires:
+            - msTimer
+      - ivd5:
+          requires:
+            - msTimer
+      - check_measure_asset:
+          requires:
+            - ivd5
+      - Prepare_Image4:
+          requires:
+            - check_measure_asset
+      - Zxc:
+          requires:
+            - check_measure_asset
+      - api-v3-tags:
+          requires:
+            - Zxc
+      - callisto-rev:
+          requires:
+            - api-v3-tags
+      - y13ld
+      - uma-run:
+          requires:
+            - y13ld
+      - text_platinum:
+          requires:
+            - y13ld
+      - fx-2:
+          requires:
+            - text_platinum
+      - yt:
+          requires:
+            - text_platinum
+      - STG_VERIFY_6:
+          requires:
+            - yt
+      - dlgscene:
+          requires:
+            - yt
+      - fx:
+          requires:
+            - dlgscene
+      - galaxy-node-command:
+          requires:
+            - dlgscene
+      - v9-canary4:
+          requires:
+            - galaxy-node-command
+      - m_nActiveTempDisabled
+      - chromeLighter:
+          requires:
+            - m_nActiveTempDisabled
+      - py311-bench:
+          requires:
+            - chromeLighter
+      - TAX_EXTERNAL:
+          requires:
+            - chromeLighter
+      - block--green:
+          requires:
+            - TAX_EXTERNAL
+      - brodcast:
+          requires:
+            - block--green
+      - testSearchStackPublic:
+          requires:
+            - block--green
+      - article_spawn_next:
+          requires:
+            - testSearchStackPublic
+      - update-cache:
+          requires:
+            - article_spawn_next
+      - desert_-var:
+          requires:
+            - article_spawn_next
+      - raw_signal:
+          requires:
+            - desert_-var
+      - py310-vet:
+          requires:
+            - raw_signal
+      - vNext:
+          requires:
+            - raw_signal
+      - AllTheStates:
+          requires:
+            - vNext
+      - build:
+          requires:
+            - AllTheStates
+      - trolley-pos-callback-stone:
+          requires:
+            - AllTheStates
+      - drawcontractthread:
+          requires:
+            - trolley-pos-callback-stone
+      - v7-rc:
+          requires:
+            - drawcontractthread
+      - ttpUP:
+          requires:
+            - drawcontractthread
+      - locale_ga_BR:
+          requires:
+            - ttpUP
+      - juliet-1:
+          requires:
+            - locale_ga_BR
+      - PUBLIC_CELL
+      - sirius-final:
+          requires:
+            - PUBLIC_CELL
+      - DateIndexPattern:
+          requires:
+            - PUBLIC_CELL
+      - cf-alt:
+          requires:
+            - DateIndexPattern
+      - FlatLabelController:
+          requires:
+            - DateIndexPattern
+      - Build_Image5:
+          requires:
+            - FlatLabelController
+      - mark15:
+          requires:
+            - FlatLabelController
+      - v4-nightly3:
+          requires:
+            - mark15
+      - calcTabRankBadge:
+          requires:
+            - mark15
+      - PrepareRelease:
+          requires:
+            - calcTabRankBadge
+      - cube_register:
+          requires:
+            - calcTabRankBadge
+      - push-it:
+          requires:
+            - cube_register
+      - ms_fname_prod:
+          requires:
+            - cube_register
+      - rust-build:
+          requires:
+            - ms_fname_prod
+      - macro-9x:
+          requires:
+            - ms_fname_prod
+      - v3-alpha:
+          requires:
+            - macro-9x
